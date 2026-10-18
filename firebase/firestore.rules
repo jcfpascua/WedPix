@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /media/{mediaId} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasOnly([
+          'originalName', 'mediaType', 'storagePath', 'uploadedAt'
+        ])
+        && request.resource.data.originalName is string
+        && request.resource.data.originalName.size() > 0
+        && request.resource.data.originalName.size() <= 255
+        && request.resource.data.mediaType in ['image', 'video']
+        && request.resource.data.storagePath is string
+        && request.resource.data.storagePath.matches('uploads/[^/]+')
+        && request.resource.data.uploadedAt == request.time;
+      allow update, delete: if false;
+    }
+  }
+}
