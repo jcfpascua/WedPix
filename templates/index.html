@@ -26,12 +26,15 @@
             the photos and videos you captured today.
         </p>
 
-        <a class="upload-button" href="{{ url_for('upload') }}">
-            Upload Photos & Videos
-        </a>    
-
+        <nav class="actions" aria-label="Wedding memories">
+            <a class="button" href="{{ url_for('upload') }}">
+                Upload photos &amp; videos
+            </a>
+        </nav>
         <p>
-            <a class="gallery-link" href="{{ url_for('gallery') }}">View Shared Gallery</a>
+            <a class="text-link" href="{{ url_for('gallery') }}">
+                View shared gallery
+            </a>
         </p>
 
         <p class="footer-note">

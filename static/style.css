@@ -153,3 +153,115 @@ button:disabled {
     background: #7d866b;
     color: white;
 }
+
+.actions,
+.page-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px 24px;
+}
+
+.button {
+    display: inline-block;
+    max-width: 100%;
+    padding: 14px 20px;
+    border: 0;
+    border-radius: 4px;
+    background: #7d866b;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #656e55;
+}
+
+.button:focus-visible,
+.text-link:focus-visible,
+.download-link:focus-visible,
+.file-picker:focus-within {
+    outline: 3px solid #b38b65;
+    outline-offset: 3px;
+}
+
+.button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.text-link,
+.download-link {
+    color: #596148;
+    text-underline-offset: 3px;
+}
+
+.upload-form {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+}
+
+.file-picker {
+    width: min(100%, 380px);
+    min-height: 92px;
+    display: grid;
+    place-content: center;
+    gap: 7px;
+    padding: 16px;
+    border: 1px dashed #a5a58e;
+    border-radius: 4px;
+    background: #f7f2eb;
+    cursor: pointer;
+}
+
+.file-picker-title {
+    font-size: 18px;
+}
+
+.file-picker-detail,
+.status {
+    color: #77776d;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+#media-files {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    margin: 8px auto 14px;
+    padding: 10px 0;
+    font-size: 0;
+}
+
+#media-files::file-selector-button {
+    display: block;
+    margin: 0 auto 8px;
+    font-size: 15px;
+}
+
+.selected-file-names {
+    display: block;
+    max-width: 100%;
+    margin: -8px auto 14px;
+    color: #77776d;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+form label[for="media-files"] {
+    display: block;
+}
+
+.status {
+    min-height: 1.5em;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
