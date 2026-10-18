@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Memories Gallery</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='gallery_style.css') }}">
+</head>
+<body>
+    <main class="welcome-card gallery-card">
+        <p class="eyebrow">OUR WEDDING DAY</p>
+        <h1>Shared Memories</h1>
+
+        <p class="description">
+            Every photo tells a story. Here are the memories
+            everyone has shared.
+        </p>
+
+        <p>
+            <a class="upload-button" href="{{ url_for('upload') }}">
+                Upload More Photos & Videos
+            </a>
+        </p>
+
+        <section class="gallery-grid">
+            {% for item in media_items %}
+                <article class="gallery-item">
+                    {% if item["media_type"] == "image" %}
+                        <img
+                            src="{{ url_for('uploaded_file', filename=item['filename']) }}"
+                            alt="{{ item['original_name'] }}"
+                            loading="lazy"
+                        >
+                    {% else %}
+                        <video controls preload="metadata">
+                            <source
+                                src="{{ url_for('uploaded_file', filename=item['filename']) }}"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+                    {% endif %}
+
+                    <p class="media-name">{{ item["original_name"] }}</p>
+                    <a
+                        class="download-button"
+                        href="{{ url_for('download_file', filename=item['filename']) }}"
+                        >
+                        Download
+                    </a>
+                    <p class="media-date">{{ item["uploaded_at"] }}</p>
+                </article>
+            {% else %}
+                <p>No photos or videos have been uploaded yet.</p>
+            {% endfor %}
+        </section>
+
+        <p><a href="{{ url_for('home') }}">Back to home</a></p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Wedding Memories</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="welcome-card">
+        <p class="eyebrow">SHARE YOUR MEMORIES</p>
+        <h1>Upload Photos & Videos</h1>
+
+        <p class="description">
+            Select the photos and videos you captured at the wedding.
+        </p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <input
+                type="file"
+                name="files"
+                accept="image/*,video/*"
+                multiple
+                required
+            >
+            <br><br>
+            <button class="upload-button" type="submit">Upload Selected Files</button>
+        </form>
+
+        <p><a href="{{ url_for('home') }}">Back to home</a></p>
+    </main>
+</body>
+</html>

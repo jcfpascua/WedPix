@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Memories</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="welcome-card">
+        <p class="eyebrow">OUR WEDDING DAY</p>
+
+        <h1>Alex <span>&</span> Jamie</h1>
+
+        <div class="divider"></div>
+
+        <p class="message">
+            We're so happy you're here.
+        </p>
+
+        <p class="description">
+            Help us keep the memories alive by sharing
+            the photos and videos you captured today.
+        </p>
+
+        <a class="upload-button" href="{{ url_for('upload') }}">
+            Upload Photos & Videos
+        </a>    
+
+        <p>
+            <a class="gallery-link" href="{{ url_for('gallery') }}">View Shared Gallery</a>
+        </p>
+
+        <p class="footer-note">
+            Made with love, shared with everyone.
+        </p>
+    </main>
+</body>
+</html>
